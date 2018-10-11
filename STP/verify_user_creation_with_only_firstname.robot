@@ -1,5 +1,5 @@
 *** Settings ***
-Library           Selenium2Library    WITH NAME    se
+Library           Selenium2Library
 
 *** Variables ***
 @{packages}       robotframework-selenium2library
