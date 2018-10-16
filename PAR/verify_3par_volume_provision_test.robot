@@ -4,8 +4,8 @@ Library           Collections
 Variables         inputs.yaml
 
 *** Variables ***
-&{3par_array}     name=3par
 @{packages}       Collections
+&{3par_array}     name=3par
 
 *** Test Cases ***
 verify_3par_volume_provision_test
