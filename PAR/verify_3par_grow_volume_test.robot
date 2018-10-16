@@ -5,7 +5,7 @@ Variables         inputs.yaml
 
 *** Variables ***
 @{packages}       Collections
-&{3par_array}     name="3par"
+&{3par_array}     name=3par
 
 *** Test Cases ***
 verify_3par_grow_volume_test
