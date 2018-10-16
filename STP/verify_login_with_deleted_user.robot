@@ -15,7 +15,7 @@ verify_login_with_deleted_user
     Call Method    ${chrome_options}    add_argument    disable-dev-shm-usage
     Call Method    ${chrome_options}    add_argument    no-sandbox
     ${options}=    Call Method    ${chrome_options}    to_capabilities
-    Open Browse    http://${stp_server.ip}    Chrome    desired_capabilities=${options}
+    Open Browser    http://${stp_server.ip}    Chrome    desired_capabilities=${options}
     Wait Until Page Contains Element    xpath=//input[@id='emailid']    50
     Input Text    xpath=//input[@id='emailid']    nexiilabs@gail.com
     Wait Until Page Contains Element    xpath=//input[@id='pwd']    50
