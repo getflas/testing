@@ -4,7 +4,7 @@ Library           Collections
 Variables         inputs.yaml
 
 *** Variables ***
-&{3par_array}     name="3par"
+&{3par_array}     name=3par
 @{packages}       Collections
 
 *** Test Cases ***
