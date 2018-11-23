@@ -23,5 +23,6 @@ verify_login_with_valid_mail_with uppercase
     Click Button    xpath=//button[@class='btn btn-purple btn-block text-uppercase waves-effect waves-light']
     Maximize Browser Window
     Sleep    5
+    Sleep    5
     Wait Until Page Contains    Users    50
     Close Browser
