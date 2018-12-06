@@ -3,7 +3,7 @@ Library           Selenium2Library
 
 *** Variables ***
 @{packages}       robotframework-selenium2library
-&{stp_server}     os=ubuntu    version=14.04    ip=
+&{stp_server}     os=ubuntu    version=14.04    ip=192.168.20.76
 @{softwares}      python-pip
 
 *** Test Cases ***
