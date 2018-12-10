@@ -1,13 +1,12 @@
 *** Settings ***
 Library           Selenium2Library
+                  
 
 *** Variables ***
-@{packages}       robotframework-selenium2library
-&{stp_server}     os=ubuntu    version=14.04    ip=
-@{softwares}      python-pip
 
 *** Test Cases ***
-verify_contact_number_with_lessthan_8_characters
+verify_login
+    
     ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
@@ -36,3 +35,7 @@ verify_contact_number_with_lessthan_8_characters
     Click Element    xpath://*[@id="basic-form-add-res"]/div[3]/ul/li[2]/a
     Wait Until Page Contains    Contact Number should contain minimum 8 digits.    50
     Close Browser
+    
+    ${project}    Set Variable    2
+    ${project}    Set Variable    ${project}
+    ${pr}    Set Variable    3
