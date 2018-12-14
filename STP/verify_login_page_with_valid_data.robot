@@ -1,25 +1,16 @@
 *** Settings ***
-Library           Selenium2Library
 
 *** Variables ***
-@{packages}       robotframework-selenium2library
-&{stp_server}     os=ubuntu    version=14.04    ip=
-@{softwares}      python-pip
 
 *** Test Cases ***
-verify_login_page_with_valid_data
-    ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome_options}    add_argument    headless
-    Call Method    ${chrome_options}    add_argument    disable-gpu
-    Call Method    ${chrome_options}    add_argument    disable-extension
-    Call Method    ${chrome_options}    add_argument    disable-dev-shm-usage
-    Call Method    ${chrome_options}    add_argument    no-sandbox
-    ${options}=    Call Method    ${chrome_options}    to_capabilities
-    Open Browser    http://${stp_server.ip}    Chrome    desired_capabilities=${options}
-    Wait Until Page Contains Element    xpath=//input[@id='emailid']    50
-    Wait Until Page Contains Element    xpath=//input[@id='pwd']    50
-    Wait Until Page Contains Element    xpath=//button[@class='btn btn-purple btn-block text-uppercase waves-effect waves-light']    50
-    Maximize Browser Window
-    Wait Until Page Contains    Remember me    50
-    Wait Until Page Contains    Forgot your password    50
-    Close Browser
+verify_login
+    ${a}    Set Variable    10
+    Set Global Variable    ${a}
+    @{list1}    Create List    1    2    3    4    ${a}
+    &{dict1}    Create Dictionary    maths=50    hindi=60    englisg=70
+    Run Keyword If    ${a} == 10
+    ...    Log    both are equal    level=INFO
+    ...    ELSE    Log    both are not equal    level=INFO
+    Log    ${dict1}    level=INFO
+    Log    ${list1}    level=INFO
+
