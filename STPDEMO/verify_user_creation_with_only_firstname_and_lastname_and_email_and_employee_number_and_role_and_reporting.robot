@@ -7,7 +7,7 @@ Library           Selenium2Library
 @{softwares}      python-pip
 
 *** Test Cases ***
-verify_the_cancel_button_in_edit
+verify_user_creation_with_only_firstname_and_lastname_and_email_and_employee_number_and_role_and_reporting
     ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
@@ -24,8 +24,24 @@ verify_the_cancel_button_in_edit
     Maximize Browser Window
     Sleep    5
     Wait Until Page Contains Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a    30
-    Wait Until Page Contains Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[1]/i    50
-    Click Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[1]/i
-    Reload Page
-    Wait Until Page Contains Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a    30
+    Click Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a
+    Wait Until Element Is Visible    xpath://*[@id="firstname"]    30
+    Input Text    xpath://*[@id="firstname"]    testing
+    Wait Until Element Is Visible    id:lastname    30
+    Input Text    id:lastname    fifteen
+    Wait Until Element Is Visible    id:email    30
+    Input Text    id:email    35testing35@gm.com
+    Wait Until Element Is Visible    id:empno    30
+    Input Text    id:empno    3535
+    Wait Until Element Is Visible    id:roleId    30
+    Click Element    id:roleId
+    Wait Until Element Is Visible    xpath://*[@id="roleId"]/option[10]    30
+    Click Element    xpath://*[@id="roleId"]/option[10]
+    Wait Until Element Is Visible    id:reportingId    30
+    Click Element    id:reportingId
+    Wait Until Page Contains Element    xpath://*[@id="reportingId"]/option[12]    30
+    Click Element    xpath://*[@id="reportingId"]/option[12]
+    Wait Until Page Contains Element    id:createuser    30
+    Click Element    id:createuser
+    Wait Until Page Contains    Select user's location    50
     Close Browser

@@ -7,7 +7,7 @@ Library           Selenium2Library
 @{softwares}      python-pip
 
 *** Test Cases ***
-verify_the_cancel_button_in_edit
+verify_the_reporting_by_selecting_multiple_roles
     ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
@@ -24,8 +24,13 @@ verify_the_cancel_button_in_edit
     Maximize Browser Window
     Sleep    5
     Wait Until Page Contains Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a    30
-    Wait Until Page Contains Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[1]/i    50
-    Click Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[1]/i
-    Reload Page
-    Wait Until Page Contains Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a    30
+    Click Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a
+    Wait Until Element Is Visible    id:reportingId    30
+    Click Element    id:reportingId
+    Wait Until Page Contains Element    xpath://*[@id="reportingId"]/option[12]    30
+    Click Element    xpath://*[@id="reportingId"]/option[12]
+    Wait Until Element Is Visible    id:reportingId    30
+    Click Element    id:reportingId
+    Wait Until Page Contains Element    xpath://*[@id="reportingId"]/option[11]    30
+    Click Element    xpath://*[@id="reportingId"]/option[11]
     Close Browser

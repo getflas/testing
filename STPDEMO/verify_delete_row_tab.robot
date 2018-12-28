@@ -7,7 +7,7 @@ Library           Selenium2Library
 @{softwares}      python-pip
 
 *** Test Cases ***
-verify_the_cancel_button_in_edit
+verify_delete_row_tab
     ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
@@ -24,8 +24,9 @@ verify_the_cancel_button_in_edit
     Maximize Browser Window
     Sleep    5
     Wait Until Page Contains Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a    30
-    Wait Until Page Contains Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[1]/i    50
-    Click Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[1]/i
+    Wait Until Page Contains Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[2]/i    50
+    Click Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[2]/i
+    Wait Until Page Contains    Are you sure that you want to delete this row?    50
+    Sleep    2
     Reload Page
-    Wait Until Page Contains Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a    30
     Close Browser

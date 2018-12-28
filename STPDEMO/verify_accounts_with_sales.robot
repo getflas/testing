@@ -7,7 +7,7 @@ Library           Selenium2Library
 @{softwares}      python-pip
 
 *** Test Cases ***
-verify_the_cancel_button_in_edit
+verify_accounts_with_sales
     ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
@@ -16,16 +16,12 @@ verify_the_cancel_button_in_edit
     Call Method    ${chrome_options}    add_argument    no-sandbox
     ${options}=    Call Method    ${chrome_options}    to_capabilities
     Open Browser    http://${stp_server.ip}    Chrome    desired_capabilities=${options}
-    Wait Until Page Contains Element    xpath=//input[@id='emailid']    50
-    Input Text    xpath=//input[@id='emailid']    veera@gm.com
-    Wait Until Page Contains Element    xpath=//input[@id='pwd']    50
-    Input Password    xpath=//input[@id='pwd']    mypassword
-    Click Button    xpath=//button[@class='btn btn-purple btn-block text-uppercase waves-effect waves-light']
-    Maximize Browser Window
+    Wait Until Page Contains Element    id=emailid    50
+    Input Text    id=emailid    sal1@gm.com
+    Wait Until Page Contains Element    id:pwd    50
+    Input Text    id:pwd    mypassword
+    Wait Until Page Contains Element    xpath://text()[.='Log In']/ancestor::button[1]    50
+    Click Element    xpath://text()[.='Log In']/ancestor::button[1]
     Sleep    5
-    Wait Until Page Contains Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a    30
-    Wait Until Page Contains Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[1]/i    50
-    Click Element    xpath://*[@id="userstable"]/tr[1]/td[8]/a[1]/i
-    Reload Page
-    Wait Until Page Contains Element    xpath://*[@id="wrapper"]/div[3]/div/div/div[1]/div/div/a    30
+    Wait Until Page Contains    Accounts    50
     Close Browser

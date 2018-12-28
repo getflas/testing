@@ -7,7 +7,7 @@ Library           Selenium2Library
 @{softwares}      python-pip
 
 *** Test Cases ***
-verify_contact_person_as_empty_in_create_accounts
+verify_company_name_with_greaterthan_200_character
     ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
@@ -22,17 +22,13 @@ verify_contact_person_as_empty_in_create_accounts
     Input Text    id:pwd    mypassword
     Wait Until Page Contains Element    xpath://text()[.='Log In']/ancestor::button[1]    50
     Click Element    xpath://text()[.='Log In']/ancestor::button[1]
-    Sleep    5
+    sleep    5
     Wait Until Page Contains Element    xpath://text()[.='Create Account']/ancestor::a[1]    50
     Click Element    xpath://text()[.='Create Account']/ancestor::a[1]
     sleep    5
     Wait Until Page Contains Element    id=company_account_name    50
-    Input Text    id=company_account_name    Nexiilabs
-    Wait Until Page Contains Element    id=company_account_location    50
-    Input Text    id=company_account_location    Hyderabad
-    Wait Until Page Contains Element    id=company_account_contact_no    50
-    Input Text    id=company_account_contact_no    8765432345
+    Input Text    id=company_account_name    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     Wait Until Page Contains Element    xpath://*[@id="basic-form-add-res"]/div[3]/ul/li[2]/a    50
     Click Element    xpath://*[@id="basic-form-add-res"]/div[3]/ul/li[2]/a
-    Wait Until Page Contains    Contact Person name should not be empty.    50
+    Wait Until Page Contains    Account Name is too long,Max length is 200 characters    50
     Close Browser
