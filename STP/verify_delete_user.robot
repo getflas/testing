@@ -3,7 +3,7 @@
 *** Variables ***
 
 *** Test Cases ***
-print_odd_numbers
+verify_delete_user
     Log    Print Odd Numbers Within a Given Range    level=INFO
     ${range}    Set Variable    12
     : For    ${num}    IN RANGE    1    ${range}
