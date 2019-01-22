@@ -11,7 +11,7 @@ verify_recruiter_lead_dashboard_with_valid_data
     ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
-    Call Method    ${chrome_options}    add_argument    disable-extension
+    Call Method    ${chrome_options    add_argument    disable-extension
     Call Method    ${chrome_options}    add_argument    disable-dev-shm-usage
     Call Method    ${chrome_options}    add_argument    no-sandbox
     ${options}=    Call Method    ${chrome_options}    to_capabilities
